@@ -101,9 +101,53 @@ body {
 }
 
 
- .home-img img{
-    width:35vw;
- }
+/* Container for rotating border */
+.home-img {
+    position: relative;
+    width: 340px; /* slightly bigger to fit circle */
+    height: 340px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Rotating border ring */
+.home-img::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 4px solid transparent;
+    border-top: 4px solid var(--main-color); /* Theme color */
+    border-right: 4px solid var(--main-color);
+    animation: rotateBorder 4s linear infinite;
+    z-index: 1;
+}
+
+/* Your image */
+/* Your image */
+.home-img img {
+    width: 320px;
+    height: 320px;
+    object-fit: contain; /* Shows the whole head without cropping */
+    background-color: rgba(0, 0, 0, 0.6); /* Dark fill for empty space */
+    border-radius: 50%;
+    z-index: 2;
+}
+
+
+/* Rotation animation */
+@keyframes rotateBorder {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+
 
  .home-content h3 {
     font-size: 3.2rem;
